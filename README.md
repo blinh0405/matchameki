@@ -4,11 +4,11 @@ A quiet, indie-style social matching web app where users discover their flavor p
 
 ![Brew & Bites Social](https://img.shields.io/badge/Next.js-14-black) ![React](https://img.shields.io/badge/React-18-blue) ![TypeScript](https://img.shields.io/badge/TypeScript-5-blue) ![Tailwind CSS](https://img.shields.io/badge/Tailwind-3-38bdf8)
 
-## 🎨 Concept
+## Concept
 
 Users take a personality quiz and receive a matcha or cookie flavor identity. The app then suggests compatible matches based on complementary flavor profiles. The entire aesthetic is inspired by indie cafés, handmade bakery brands, and bedroom pop visuals—soft, calm, and deliberately anti-corporate.
 
-## ✨ Features
+## Features
 
 - **Personality Quiz**: 8 thoughtfully crafted questions that calculate your flavor identity
 - **6 Unique Flavors**: Zen Matcha, Strawberry Matcha Cookie, Dark Chocolate Matcha, Honey Butter Cookie, Vanilla Cloud Cookie, and Yuzu Matcha
@@ -18,7 +18,7 @@ Users take a personality quiz and receive a matcha or cookie flavor identity. Th
 - **Smooth Animations**: Framer Motion for gentle, purposeful transitions
 - **Local Persistence**: Quiz results saved to localStorage
 
-## 🎨 Design Philosophy
+## Design Philosophy
 
 ### Color Palette
 - **Matcha Green**: `#7FAF8C` (primary)
@@ -43,7 +43,7 @@ Users take a personality quiz and receive a matcha or cookie flavor identity. Th
 ❌ No emoji overload  
 ❌ No corporate tech vibes  
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 - **Framework**: Next.js 14 (App Router)
 - **Language**: TypeScript
@@ -51,7 +51,7 @@ Users take a personality quiz and receive a matcha or cookie flavor identity. Th
 - **Animation**: Framer Motion
 - **State**: React hooks + localStorage
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 brew-and-bites-social/
@@ -83,7 +83,7 @@ brew-and-bites-social/
 └── README.md
 ```
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 - Node.js 18+ installed
@@ -116,7 +116,7 @@ npm run build
 npm start
 ```
 
-## 🧪 How It Works
+## How It Works
 
 ### Quiz Logic
 The quiz uses a weighted scoring system:
@@ -137,7 +137,7 @@ All users, profiles, and messages are simulated:
 - Messages saved only to localStorage
 - Perfect for portfolio demonstrations
 
-## 📱 Pages Overview
+## Pages Overview
 
 ### Landing Page (`/`)
 - Minimalist hero section
@@ -162,7 +162,7 @@ All users, profiles, and messages are simulated:
 - Send message button
 - Back navigation
 
-## 🎯 Portfolio Highlights
+## Portfolio Highlights
 
 This project demonstrates:
 
@@ -175,7 +175,7 @@ This project demonstrates:
 ✅ **Component Architecture**: Reusable, well-structured components  
 ✅ **No Backend Required**: Fully client-side, easy to deploy  
 
-## 🎨 Design Decisions
+## Design Decisions
 
 **Why no backend?**  
 This is a portfolio piece focused on frontend excellence. Mock data keeps it lightweight and deployable anywhere.
@@ -189,7 +189,7 @@ The animations are subtle and purposeful—not flashy. Framer Motion allows for 
 **Why Tailwind?**  
 Rapid styling with custom design tokens. The utility-first approach keeps the CSS maintainable while allowing creative freedom.
 
-## 🚢 Deployment
+## Deployment
 
 This app can be deployed to:
 - **Vercel** (recommended for Next.js)
@@ -198,7 +198,7 @@ This app can be deployed to:
 
 No environment variables or backend configuration needed!
 
-## 🔮 Future Enhancements
+## Future Enhancements
 
 If expanding beyond a portfolio piece:
 - Real authentication (NextAuth, Clerk)
@@ -209,11 +209,11 @@ If expanding beyond a portfolio piece:
 - Email notifications
 - Mobile app version (React Native)
 
-## 📝 License
+## License
 
 This project is open source and available for portfolio use. Feel free to fork, modify, and use in your own projects.
 
-## 🙏 Credits
+## Credits
 
 **Design Inspiration:**
 - Indie café aesthetics
@@ -221,7 +221,7 @@ This project is open source and available for portfolio use. Feel free to fork, 
 - Handmade bakery branding
 - Bedroom pop visual language
 
-**Built by:** A developer who believes the web should be beautiful, calm, and human.
+**Built by:** A developer who believes the web should be beautiful, calm, and human and we can now use creativity instead of technical to build our own project
 
 ---
 
