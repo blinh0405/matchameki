@@ -1,0 +1,49 @@
+How to use the website?
+
+git clone https://github.com/YOUR-USERNAME/brew-bites-social.git
+cd brew-bites-social
+npm install
+npm run dev
+```
+3. They open `http://localhost:3000`
+
+**Option 2: Deploy it online (FREE)**
+
+### Deploy on Vercel (Recommended - Super Easy!)
+1. Go to https://vercel.com
+2. Sign up with GitHub
+3. Click **"Add New Project"**
+4. Import your `brew-bites-social` repo
+5. Click **"Deploy"**
+6. Wait 2 minutes → You get a live URL like `brew-bites-social.vercel.app`
+7. Share that URL with anyone! 
+
+### Deploy on Netlify (Alternative)
+1. Go to https://netlify.com
+2. Sign up with GitHub
+3. Click **"Add new site"** → **"Import an existing project"**
+4. Connect to your GitHub repo
+5. Build settings:
+   - Build command: `npm run build`
+   - Publish directory: `.next`
+6. Click **"Deploy"**
+
+## What to Share with Your Friend:
+
+**If deployed:**
+```
+Hey! Check out the matcha/cookie quiz I made:
+https://your-app.vercel.app
+
+Code is here: https://github.com/YOUR-USERNAME/brew-bites-social
+```
+
+**If they're running locally:**
+```
+Clone this and run locally:
+git clone https://github.com/YOUR-USERNAME/brew-bites-social.git
+cd brew-bites-social
+npm install
+npm run dev
+
+Then open http://localhost:3000
