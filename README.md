@@ -1,161 +1,228 @@
-## Any Promise
+# Brew & Bites Social
 
-[![Build Status](https://secure.travis-ci.org/kevinbeaty/any-promise.svg)](http://travis-ci.org/kevinbeaty/any-promise)
+A quiet, indie-style social matching web app where users discover their flavor personality and connect with compatible people. Built as a polished portfolio piece showcasing modern frontend design and development.
 
-Let your library support any ES 2015 (ES6) compatible `Promise` and leave the choice to application authors. The application can *optionally* register its preferred `Promise` implementation and it will be exported when requiring `any-promise` from library code.
+![Brew & Bites Social](https://img.shields.io/badge/Next.js-14-black) ![React](https://img.shields.io/badge/React-18-blue) ![TypeScript](https://img.shields.io/badge/TypeScript-5-blue) ![Tailwind CSS](https://img.shields.io/badge/Tailwind-3-38bdf8)
 
-If no preference is registered, defaults to the global `Promise` for newer Node.js versions. The browser version defaults to the window `Promise`, so polyfill or register as necessary.
+## 🎨 Concept
 
-### Usage with global Promise:
+Users take a personality quiz and receive a matcha or cookie flavor identity. The app then suggests compatible matches based on complementary flavor profiles. The entire aesthetic is inspired by indie cafés, handmade bakery brands, and bedroom pop visuals—soft, calm, and deliberately anti-corporate.
 
-Assuming the global `Promise` is the desired implementation:
+## ✨ Features
+
+- **Personality Quiz**: 8 thoughtfully crafted questions that calculate your flavor identity
+- **6 Unique Flavors**: Zen Matcha, Strawberry Matcha Cookie, Dark Chocolate Matcha, Honey Butter Cookie, Vanilla Cloud Cookie, and Yuzu Matcha
+- **Smart Matching**: Compatibility algorithm that pairs users with complementary flavor personalities
+- **Profile System**: Detailed user profiles with bios, interests, and compatibility explanations
+- **Message Modal**: Simple first-message interface (mock implementation)
+- **Smooth Animations**: Framer Motion for gentle, purposeful transitions
+- **Local Persistence**: Quiz results saved to localStorage
+
+## 🎨 Design Philosophy
+
+### Color Palette
+- **Matcha Green**: `#7FAF8C` (primary)
+- **Deep Matcha**: `#5F8F70`
+- **Soft Pink**: `#F4B6C2`
+- **Dusty Rose**: `#E8A4B8`
+- **Cream Background**: `#FFF7F5`
+- **Cookie Brown**: `#B48A78`
+- **Dark Text**: `#2E2E2E`
+
+### Typography
+- **Headings**: Playfair Display (serif)
+- **Body**: Inter (sans-serif)
+
+### Aesthetic Goals
+✅ Soft, calm, café-inspired  
+✅ Indie aesthetic (avoiding AI-generic patterns)  
+✅ Minimal but warm  
+✅ Generous spacing and rounded corners  
+✅ Subtle gradients and soft shadows  
+❌ No harsh blacks or bright neons  
+❌ No emoji overload  
+❌ No corporate tech vibes  
+
+## 🛠️ Tech Stack
+
+- **Framework**: Next.js 14 (App Router)
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS
+- **Animation**: Framer Motion
+- **State**: React hooks + localStorage
+
+## 📁 Project Structure
+
+```
+brew-and-bites-social/
+├── app/
+│   ├── components/          # Reusable UI components
+│   │   ├── MatchCard.tsx
+│   │   └── MessageModal.tsx
+│   ├── profile/
+│   │   └── [id]/
+│   │       └── page.tsx     # Dynamic profile page
+│   ├── quiz/
+│   │   └── page.tsx         # Quiz interface
+│   ├── result/
+│   │   └── page.tsx         # Results with matches
+│   ├── globals.css          # Global styles
+│   ├── layout.tsx           # Root layout
+│   └── page.tsx             # Landing page
+├── data/
+│   ├── quizData.ts          # Quiz questions
+│   ├── flavorData.ts        # Flavor personalities
+│   └── userData.ts          # Mock user profiles
+├── utils/
+│   ├── matching.ts          # Compatibility algorithm
+│   └── quizLogic.ts         # Quiz calculation
+├── public/                  # Static assets
+├── package.json
+├── tailwind.config.js
+├── tsconfig.json
+└── README.md
+```
+
+## 🚀 Getting Started
+
+### Prerequisites
+- Node.js 18+ installed
+- npm or yarn package manager
+
+### Installation
+
+1. **Clone or download the project**
+```bash
+cd brew-and-bites-social
+```
+
+2. **Install dependencies**
+```bash
+npm install
+```
+
+3. **Run development server**
+```bash
+npm run dev
+```
+
+4. **Open your browser**
+Navigate to `http://localhost:3000`
+
+### Build for Production
 
 ```bash
-# Install any libraries depending on any-promise
-$ npm install mz
+npm run build
+npm start
 ```
 
-The installed libraries will use global Promise by default.
+## 🧪 How It Works
 
-```js
-// in library
-var Promise = require('any-promise')  // the global Promise
+### Quiz Logic
+The quiz uses a weighted scoring system:
+- Each answer option contributes points to multiple flavor categories
+- The flavor with the highest total score becomes the user's identity
+- Results are stored in localStorage for persistence
 
-function promiseReturningFunction(){
-    return new Promise(function(resolve, reject){...})
-}
-```
+### Matching Algorithm
+1. Each flavor has a predefined list of compatible flavors
+2. Compatibility scores are generated (88-96% for good matches)
+3. Custom compatibility reasons explain why two flavors work together
+4. The app randomly selects 3 compatible matches from the mock user pool
 
-### Usage with registration:
+### Mock Data
+All users, profiles, and messages are simulated:
+- 12 pre-written user profiles
+- No backend or database required
+- Messages saved only to localStorage
+- Perfect for portfolio demonstrations
 
-Assuming `bluebird` is the desired Promise implementation:
+## 📱 Pages Overview
 
-```bash
-# Install preferred promise library
-$ npm install bluebird
-# Install any-promise to allow registration
-$ npm install any-promise
-# Install any libraries you would like to use depending on any-promise
-$ npm install mz
-```
+### Landing Page (`/`)
+- Minimalist hero section
+- Animated gradient background
+- Single CTA: "Take the flavor quiz"
 
-Register your preference in the application entry point before any other `require` of packages that load `any-promise`:
+### Quiz Page (`/quiz`)
+- 8 questions with smooth card transitions
+- Progress bar at top
+- Back navigation supported
+- Auto-advances on selection
 
-```javascript
-// top of application index.js or other entry point
-require('any-promise/register/bluebird')
+### Result Page (`/result`)
+- Large flavor personality card
+- Trait badges
+- 3 suggested matches with compatibility scores
+- Option to retake quiz
 
-// -or- Equivalent to above, but allows customization of Promise library
-require('any-promise/register')('bluebird', {Promise: require('bluebird')})
-```
+### Profile Page (`/profile/[id]`)
+- Full user bio and interests
+- Compatibility explanation
+- Send message button
+- Back navigation
 
-Now that the implementation is registered, you can use any package depending on `any-promise`:
+## 🎯 Portfolio Highlights
 
+This project demonstrates:
 
-```javascript
-var fsp = require('mz/fs') // mz/fs will use registered bluebird promises
-var Promise = require('any-promise')  // the registered bluebird promise 
-```
+✅ **Modern React Patterns**: App Router, Server/Client Components, hooks  
+✅ **TypeScript Proficiency**: Proper typing throughout  
+✅ **Animation Expertise**: Framer Motion for smooth, purposeful motion  
+✅ **Design Sensibility**: Cohesive aesthetic with attention to detail  
+✅ **State Management**: Local state + localStorage for persistence  
+✅ **Routing**: Dynamic routes with Next.js  
+✅ **Component Architecture**: Reusable, well-structured components  
+✅ **No Backend Required**: Fully client-side, easy to deploy  
 
-It is safe to call `register` multiple times, but it must always be with the same implementation.
+## 🎨 Design Decisions
 
-Again, registration is *optional*. It should only be called by the application user if overriding the global `Promise` implementation is desired.
+**Why no backend?**  
+This is a portfolio piece focused on frontend excellence. Mock data keeps it lightweight and deployable anywhere.
 
-### Optional Application Registration
+**Why these specific flavors?**  
+Each flavor represents a distinct personality archetype while maintaining the café/bakery theme. They're memorable and visually distinctive.
 
-As an application author, you can *optionally* register a preferred `Promise` implementation on application startup (before any call to `require('any-promise')`:
+**Why Framer Motion?**  
+The animations are subtle and purposeful—not flashy. Framer Motion allows for spring physics and gesture-based interactions that feel natural.
 
-You must register your preference before any call to `require('any-promise')` (by you or required packages), and only one implementation can be registered. Typically, this registration would occur at the top of the application entry point.
+**Why Tailwind?**  
+Rapid styling with custom design tokens. The utility-first approach keeps the CSS maintainable while allowing creative freedom.
 
+## 🚢 Deployment
 
-#### Registration shortcuts
+This app can be deployed to:
+- **Vercel** (recommended for Next.js)
+- **Netlify**
+- **GitHub Pages** (with static export)
 
-If you are using a known `Promise` implementation, you can register your preference with a shortcut:
+No environment variables or backend configuration needed!
 
+## 🔮 Future Enhancements
 
-```js
-require('any-promise/register/bluebird')
-// -or-
-import 'any-promise/register/q';
-```
+If expanding beyond a portfolio piece:
+- Real authentication (NextAuth, Clerk)
+- Database integration (Supabase, PlanetScale)
+- Real-time messaging (Socket.io, Ably)
+- Image uploads for profiles
+- More quiz questions and flavors
+- Email notifications
+- Mobile app version (React Native)
 
-Shortcut registration is the preferred registration method as it works in the browser and Node.js. It is also convenient for using with `import` and many test runners, that offer a `--require` flag:
+## 📝 License
 
-```
-$ ava --require=any-promise/register/bluebird test.js
-```
+This project is open source and available for portfolio use. Feel free to fork, modify, and use in your own projects.
 
-Current known implementations include `bluebird`, `q`, `when`, `rsvp`, `es6-promise`, `promise`, `native-promise-only`, `pinkie`, `vow` and `lie`. If you are not using a known implementation, you can use another registration method described below.
+## 🙏 Credits
 
+**Design Inspiration:**
+- Indie café aesthetics
+- Matcha culture
+- Handmade bakery branding
+- Bedroom pop visual language
 
-#### Basic Registration
+**Built by:** A developer who believes the web should be beautiful, calm, and human.
 
-As an alternative to registration shortcuts, you can call the `register` function with the preferred `Promise` implementation. The benefit of this approach is that a `Promise` library can be required by name without being a known implementation.  This approach does NOT work in the browser. To use `any-promise` in the browser use either registration shortcuts or specify the `Promise` constructor using advanced registration (see below).
+---
 
-```javascript
-require('any-promise/register')('when')
-// -or- require('any-promise/register')('any other ES6 compatible library (known or otherwise)')
-```
-
-This registration method will try to detect the `Promise` constructor from requiring the specified implementation.  If you would like to specify your own constructor, see advanced registration.
-
-
-#### Advanced Registration
-
-To use the browser version, you should either install a polyfill or explicitly register the `Promise` constructor:
-
-```javascript
-require('any-promise/register')('bluebird', {Promise: require('bluebird')})
-```
-
-This could also be used for registering a custom `Promise` implementation or subclass.
-
-Your preference will be registered globally, allowing a single registration even if multiple versions of `any-promise` are installed in the NPM dependency tree or are using multiple bundled JavaScript files in the browser. You can bypass this global registration in options:
-
-
-```javascript
-require('../register')('es6-promise', {Promise: require('es6-promise').Promise, global: false})
-```
-
-### Library Usage
-
-To use any `Promise` constructor, simply require it:
-
-```javascript
-var Promise = require('any-promise');
-
-return Promise
-  .all([xf, f, init, coll])
-  .then(fn);
-
-
-return new Promise(function(resolve, reject){
-  try {
-    resolve(item);
-  } catch(e){
-    reject(e);
-  }
-});
-
-```
-
-Except noted below, libraries using `any-promise` should only use [documented](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) functions as there is no guarantee which implementation will be chosen by the application author.  Libraries should never call `register`, only the application user should call if desired.
-
-
-#### Advanced Library Usage
-
-If your library needs to branch code based on the registered implementation, you can retrieve it using `var impl = require('any-promise/implementation')`, where `impl` will be the package name (`"bluebird"`, `"when"`, etc.) if registered, `"global.Promise"` if using the global version on Node.js, or `"window.Promise"` if using the browser version. You should always include a default case, as there is no guarantee what package may be registered.
-
-
-### Support for old Node.js versions
-
-Node.js versions prior to `v0.12` may have contained buggy versions of the global `Promise`. For this reason, the global `Promise` is not loaded automatically for these old versions.  If using `any-promise` in Node.js versions versions `<= v0.12`, the user should register a desired implementation.
-
-If an implementation is not registered, `any-promise` will attempt to discover an installed `Promise` implementation.  If no implementation can be found, an error will be thrown on `require('any-promise')`.  While the auto-discovery usually avoids errors, it is non-deterministic. It is recommended that the user always register a preferred implementation for older Node.js versions.
-
-This auto-discovery is only available for Node.jS versions prior to `v0.12`. Any newer versions will always default to the global `Promise` implementation.
-
-### Related
-
-- [any-observable](https://github.com/sindresorhus/any-observable) - `any-promise` for Observables.
-
+*Find your flavor. Connect with your people.*
